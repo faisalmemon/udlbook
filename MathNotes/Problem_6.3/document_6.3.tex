@@ -1,0 +1,42 @@
+% Problem 6.3
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{Problem 6.3}
+
+\begin{document}
+
+\section{Problem}
+
+Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect to $ \phi_0 $ and $\phi_1$ for the Gabor model equation 6.8. 
+
+\section{Answer}
+
+\begin{align}
+    f[x,\phi] &= sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x)^2}{32.0} \right)
+    \\
+    L[\phi]   &= \sum_{i=1}^{I} (f[x_i, \phi]-y_i)^2
+    \\
+\end{align}
+
+\begin{align*}
+\text{Let } u_i &= f[x_i, \phi]-y_i \\
+\text{Then } L [\phi] &= \sum_{i=1}^{I} (u_i)^2 \\
+\frac{\partial{L[\phi]}}{\partial{\phi_0}} &= \sum_{i=1}^{I}  \frac{\partial{L[\phi]}}{\partial{u_i}} \cdot \
+ \frac{\partial{u_i}}{\partial{\phi_0}}
+ \\
+ \text{Let us break it down } \frac{\partial{L[\phi]}}{\partial{u_i}} &= 2 \cdot u_i = 2 \cdot sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)
+ \\
+ \frac{\partial{u_i}}{\partial{\phi_0}} &= \frac{\partial{sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)}}{\partial{\phi_0}} \\
+ \text{Let } p &= sin(\phi_0 + 0.06 \cdot \phi_1x) \\
+ \text{Let } q &= exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \\
+ \text{So that } \frac{\partial{u_i}}{\partial{\phi_0}} &= p\frac{\partial{q}}{\partial{\phi_0}} + q \frac{\partial{p}}{\partial{\phi_0}}
+\end{align*}
+
+
+
+\end{document}
