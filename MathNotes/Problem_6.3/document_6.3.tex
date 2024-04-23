@@ -32,9 +32,15 @@ Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect t
  \text{Let us break it down } \frac{\partial{L[\phi]}}{\partial{u_i}} &= 2 \cdot u_i = 2 \cdot \left( sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right)
  \\
  \frac{\partial{u_i}}{\partial{\phi_0}} &= \frac{\partial{sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)}}{\partial{\phi_0}} \\
- \text{Let } p &= sin(\phi_0 + 0.06 \cdot \phi_1x) \\
+ \text{Let } p &= sin(\phi_0 + 0.06 \cdot \phi_1x_i) \\
  \text{Let } q &= exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \\
  \text{So that } \frac{\partial{u_i}}{\partial{\phi_0}} &= p\frac{\partial{q}}{\partial{\phi_0}} + q \frac{\partial{p}}{\partial{\phi_0}}
+ \\
+ \text{Let } r &= \phi_0 + 0.06 \cdot \phi_1 x_i
+ \\
+ \text{So that } \frac{\partial{p}}{\partial{\phi_0}} &= \frac{\partial{sin(r)}}{\partial{r}} \cdot \frac{\partial{r}}{\partial{\phi_0}} = cos (r) \cdot (1) = cos(\phi_0 + 0.06\cdot \phi_1 x_i)
+ \\
+ \text{Let } s &= \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)
 \end{align*}
 
 
