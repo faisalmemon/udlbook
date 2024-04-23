@@ -29,7 +29,7 @@ Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect t
 \frac{\partial{L[\phi]}}{\partial{\phi_0}} &= \sum_{i=1}^{I}  \frac{\partial{L[\phi]}}{\partial{u_i}} \cdot \
  \frac{\partial{u_i}}{\partial{\phi_0}}
  \\
- \text{Let us break it down } \frac{\partial{L[\phi]}}{\partial{u_i}} &= 2 \cdot u_i = 2 \cdot sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)
+ \text{Let us break it down } \frac{\partial{L[\phi]}}{\partial{u_i}} &= 2 \cdot u_i = 2 \cdot \left( sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right)
  \\
  \frac{\partial{u_i}}{\partial{\phi_0}} &= \frac{\partial{sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)}}{\partial{\phi_0}} \\
  \text{Let } p &= sin(\phi_0 + 0.06 \cdot \phi_1x) \\
