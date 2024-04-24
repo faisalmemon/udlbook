@@ -18,7 +18,7 @@ Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect t
 \section{Answer}
 
 \begin{align}
-    f[x,\phi] &= sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x)^2}{32.0} \right)
+    f[x,\phi] &= \sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot \exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x)^2}{32.0} \right)
     \\
     L[\phi]   &= \sum_{i=1}^{I} (f[x_i, \phi]-y_i)^2
 \end{align}
@@ -29,37 +29,37 @@ Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect t
 \frac{\partial{L[\phi]}}{\partial{\phi_0}} &= \sum_{i=1}^{I}  \frac{\partial{L[\phi]}}{\partial{u_i}} \cdot \
  \frac{\partial{u_i}}{\partial{\phi_0}}
  \\
- \text{Let us break it down } \frac{\partial{L[\phi]}}{\partial{u_i}} &= 2 \cdot u_i = 2 \cdot \left( sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right)
+ \text{Let us break it down } \frac{\partial{L[\phi]}}{\partial{u_i}} &= 2 \cdot u_i = 2 \cdot \left( \sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot \exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right)
  \\
- \frac{\partial{u_i}}{\partial{\phi_0}} &= \frac{\partial{sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)}}{\partial{\phi_0}} \\
- \text{Let } p &= sin(\phi_0 + 0.06 \cdot \phi_1x_i) \\
- \text{Let } q &= exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \\
+ \frac{\partial{u_i}}{\partial{\phi_0}} &= \frac{\partial{\sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot \exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)}}{\partial{\phi_0}} \\
+ \text{Let } p &= \sin(\phi_0 + 0.06 \cdot \phi_1x_i) \\
+ \text{Let } q &= \exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \\
  \text{So that } \frac{\partial{u_i}}{\partial{\phi_0}} &= p\frac{\partial{q}}{\partial{\phi_0}} + q \frac{\partial{p}}{\partial{\phi_0}}
  \\
  \text{Let } r &= \phi_0 + 0.06 \cdot \phi_1 x_i
  \\
- \text{So that } \frac{\partial{p}}{\partial{\phi_0}} &= \frac{\partial{sin(r)}}{\partial{r}} \cdot \frac{\partial{r}}{\partial{\phi_0}} = cos (r) \cdot (1) = cos(\phi_0 + 0.06\cdot \phi_1 x_i)
+ \text{So that } \frac{\partial{p}}{\partial{\phi_0}} &= \frac{\partial{\sin(r)}}{\partial{r}} \cdot \frac{\partial{r}}{\partial{\phi_0}} = \cos (r) \cdot (1) = \cos(\phi_0 + 0.06\cdot \phi_1 x_i)
  \\
  \text{Let } s &= \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)
  \\
- \text{So that} \frac{\partial{q}}{\partial{\phi_0}} &= \frac{\partial{exp(s)}}{\partial{s}} \cdot \frac{\partial{s}}{\partial{\phi_0}} = exp(s) \cdot \frac{\partial{s}}{\partial{\phi_0}}
+ \text{So that} \frac{\partial{q}}{\partial{\phi_0}} &= \frac{\partial{\exp(s)}}{\partial{s}} \cdot \frac{\partial{s}}{\partial{\phi_0}} = \exp(s) \cdot \frac{\partial{s}}{\partial{\phi_0}}
  \\
  \text{Let }t &= \phi_0 + 0.06 \cdot \phi_1x_i
  \\
  \text{So that } \frac{\partial{s}}{\partial{\phi_0}} &= \frac{\partial{\frac{-1}{32}}t^2}{\partial{t}} \cdot \frac{\partial{t}}{\partial{\phi_0}} = \frac{-1}{16} \cdot ( \phi_0 + 0.06 \cdot \phi_1x_i ) \cdot (1) = -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16}
  \\
- \text{Substituting } \frac{\partial{q}}{\partial{\phi_0}} &= exp(s) \cdot  -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} = -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)
+ \text{Substituting } \frac{\partial{q}}{\partial{\phi_0}} &= \exp(s) \cdot  -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} = -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot \exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right)
  \\
- \text{Similarly } \frac{\partial{p}}{\partial{\phi_0}} &= cos(\phi_0 + 0.06\cdot \phi_1 x_i)
+ \text{Similarly } \frac{\partial{p}}{\partial{\phi_0}} &= \cos(\phi_0 + 0.06\cdot \phi_1 x_i)
  \\
- \text{So that } \frac{\partial{u_i}}{\partial{\phi_0}} &= sin(\phi_0 + 0.06 \cdot \phi_1x_i) \cdot -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \\
- &+ exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \cdot cos(\phi_0 + 0.06\cdot \phi_1 x_i)
+ \text{So that } \frac{\partial{u_i}}{\partial{\phi_0}} &= \sin(\phi_0 + 0.06 \cdot \phi_1x_i) \cdot -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot \exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \\
+ &+ \exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \cdot \cos(\phi_0 + 0.06\cdot \phi_1 x_i)
 \end{align*}
 
 
 \begin{dmath*}
-    \text{Finally } \frac{\partial{L[\phi]}}{\partial{\phi_0}} = \sum_{i=1}^{I} 2 \cdot \left( sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right) \\
-    \cdot  \left[ sin(\phi_0 + 0.06 \cdot \phi_1x_i) \cdot -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) + exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \cdot cos(\phi_0 + 0.06\cdot \phi_1 x_i) \right]
+    \text{Finally } \frac{\partial{L[\phi]}}{\partial{\phi_0}} = \sum_{i=1}^{I} 2 \cdot \left( \sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot \exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right) \\
+    \cdot  \left[ \sin(\phi_0 + 0.06 \cdot \phi_1x_i) \cdot -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot \exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) + \exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \cdot \cos(\phi_0 + 0.06\cdot \phi_1 x_i) \right]
 \end{dmath*}
     
 
