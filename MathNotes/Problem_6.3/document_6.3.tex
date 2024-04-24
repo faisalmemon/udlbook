@@ -5,6 +5,7 @@
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{breqn} 
 
 \title{Problem 6.3}
 
@@ -53,11 +54,13 @@ Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect t
  \\
  \text{So that } \frac{\partial{u_i}}{\partial{\phi_0}} &= sin(\phi_0 + 0.06 \cdot \phi_1x_i) \cdot -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \\
  &+ exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \cdot cos(\phi_0 + 0.06\cdot \phi_1 x_i)
- \\
- \text{Finally } \frac{\partial{L[\phi]}}{\partial{\phi_0}} &= \sum_{i=1}^{I} 2 \cdot \left( sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right) \\
- &\cdot  \left[ sin(\phi_0 + 0.06 \cdot \phi_1x_i) \cdot -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) + exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \cdot cos(\phi_0 + 0.06\cdot \phi_1 x_i) \right]
 \end{align*}
 
 
+\begin{dmath*}
+    \text{Finally } \frac{\partial{L[\phi]}}{\partial{\phi_0}} = \sum_{i=1}^{I} 2 \cdot \left( sin(\phi_0 + 0.06 \cdot \phi_1x) \cdot exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) - y_i \right) \\
+    \cdot  \left[ sin(\phi_0 + 0.06 \cdot \phi_1x_i) \cdot -\frac{\phi_0 + 0.06 \cdot \phi_1x_i}{16} \cdot exp \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) + exp  \left( \frac{-(\phi_0 + 0.06 \cdot \phi_1x_i)^2}{32.0} \right) \cdot cos(\phi_0 + 0.06\cdot \phi_1 x_i) \right]
+\end{dmath*}
+    
 
 \end{document}
