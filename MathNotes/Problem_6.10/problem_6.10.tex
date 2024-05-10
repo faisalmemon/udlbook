@@ -12,12 +12,82 @@
 
 \begin{document}
 
+\maketitle
+
+\section{Formula}
+
+\begin{align*}
+    \boldsymbol{m}_{t+1} &\leftarrow \beta \cdot \boldsymbol{m}_{t} + (1 - \beta)\sum_{i \in \mathcal{B}_{t}}\frac{\partial{l_{i}[\boldsymbol{\phi}_{t}]}}{\partial{\boldsymbol{\phi}}}
+    \\
+    \boldsymbol{\phi}_{t+1} &\leftarrow \boldsymbol{\phi}_{t} - \alpha \cdot \boldsymbol{m}_{t+1}
+\end{align*}
+
 \section{Problem}
 
-Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect to $ \phi_0 $ and $\phi_1$ for the Gabor model equation 6.8. 
+Show that the momentum term $\boldsymbol{m}_{t} $ is an infinite weighted sum of the gradients at the previous iterations and derive an expression for the coeﬀicients (weights) of that sum.
 
 \section{Answer}
 
+\begin{align*}
+    \boldsymbol{m}_{t+2} &\leftarrow \beta \cdot
+    \beta \cdot \left( \boldsymbol{m}_{t} + (1 - \beta)\sum_{i \in \mathcal{B}_{t}}
+     \frac{\partial{l_{i}[\boldsymbol{\phi}_{t}]}}{\partial{\boldsymbol{\phi}}} \right)
+     + (1 - \beta)\sum_{i \in \mathcal{B}_{t+1}}\frac{\partial{l_{i}[\boldsymbol{\phi}_{t+1}]}}{\partial{\boldsymbol{\phi}}}
+\end{align*}
+
+\begin{align*}
+    \boldsymbol{m}_{t+3} &\leftarrow \beta \cdot 
+    \left(
+        \beta \cdot
+        \beta \cdot \left( \boldsymbol{m}_{t} + (1 - \beta)\sum_{i \in \mathcal{B}_{t}}
+         \frac{\partial{l_{i}[\boldsymbol{\phi}_{t}]}}{\partial{\boldsymbol{\phi}}} \right)
+         + (1 - \beta)\sum_{i \in \mathcal{B}_{t+1}}\frac{\partial{l_{i}[\boldsymbol{\phi}_{t+1}]}}{\partial{\boldsymbol{\phi}}}
+    \right) 
+    + (1 - \beta)\sum_{i \in \mathcal{B}_{t+2}}\frac{\partial{l_{i}[\boldsymbol{\phi}_{t+2}]}}{\partial{\boldsymbol{\phi}}}
+\end{align*}
+
+\begin{align*}
+    \boldsymbol{m}_{t+n} &\leftarrow \beta^{n} \cdot 
+    \boldsymbol{m}_{t}
+    + \sum_{j = 1}^{n}\beta^{j} \cdot 
+    \left(
+        (1 - \beta)\sum_{i \in \mathcal{B}_{t+j}}
+         \frac{\partial{l_{i}[\boldsymbol{\phi}_{t+j}]}}{\partial{\boldsymbol{\phi}}}
+    \right)
+\end{align*}
+
+Therefore the weights for the gradients are $w_j$
+\begin{align*}
+     = \beta^{j} \cdot (1 - \beta)
+\end{align*}
 
 
+\section{Bard's Explanation}
+
+\subsection{Unfolding the Recursion}
+
+We can prove this using mathematical induction and unfolding the recursion for $ m_{t} $
+
+Base Case ($t = 1$):
+We don't have a previous $m_{0}$ term in the update rule for $m_{1}$. So, $m_{1}$ only considers the gradient at the first iteration:
+
+\begin{alignat*}{1}
+    \boldsymbol{m}_1 &= (1 - \beta) \sum_{i \in \mathcal{B}_1} \frac{\partial{l_i[\boldsymbol{\phi}_t]}}{\partial{\boldsymbol{\phi}}}
+    \\
+    Induction Hypothesis
+    \\
+    \boldsymbol{m}_t &= \beta \cdot \boldsymbol{m}_{t-1} + (1 - \beta) \sum_{i \in \mathcal{B}_t} \frac{\partial{l_i[\boldsymbol{\phi}_t]}}{\partial{\boldsymbol{\phi}}}
+    \\
+    \\ Induction Step
+    \\
+    \boldsymbol{m}_{t+1} &= \beta \left( \beta \cdot \boldsymbol{m}_{t-2} + (1 - \beta) \sum_{i \in \mathcal{B}_{t-1}} \frac{\partial{l_i[\boldsymbol{\phi}_{t-1}]}}{\partial{\boldsymbol{\phi}}} \right) + (1 - \beta) \sum_{i \in \mathcal{B}_t} \frac{\partial{l_i[\boldsymbol{\phi}_t]}}{\partial{\boldsymbol{\phi}}}
+    \\
+    \\ Rearranging
+    \\
+    \boldsymbol{m}_{t+1} &= \beta^2 \cdot \boldsymbol{m}_{t-2} + (1 - \beta) \beta \sum_{i \in \mathcal{B}_{t-1}} \frac{\partial{l_i[\boldsymbol{\phi}_{t-1}]}}{\partial{\boldsymbol{\phi}}} + (1 - \beta) \sum_{i \in \mathcal{B}_t} \frac{\partial{l_i[\boldsymbol{\phi}_t]}}{\partial{\boldsymbol{\phi}}}
+    \\
+    \\ Weights of the gradient
+    \\
+    \text{weight}_k &= (\beta^{t-k}) \cdot (1 - \beta)
+\end{alignat*}
 \end{document}
