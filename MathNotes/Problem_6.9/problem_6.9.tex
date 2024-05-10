@@ -1,0 +1,26 @@
+% Problem 6.9
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{breqn} 
+
+\title{Problem 6.9}
+
+\begin{document}
+\maketitle
+
+\section{Problem}
+
+We run the stochastic gradient descent algorithm for $1,000$ iterations on a dataset of size $100$ with a batch size of $20$. For how many epochs did we train the model?
+
+\section{Answer}
+
+Assuming we don't replace the items selected for each batch.
+The first epoc occurs after $\frac{100}{20} = 5$ iterations.
+The pool of data is exhausted, so we have done our first epoch.
+With $5$ iterations per epoch we have $1000$ iterations so that is $ \frac{1000}{5} = 200$ epochs. 
+
+\end{document}
