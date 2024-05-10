@@ -98,12 +98,12 @@ Compute the derivatives of the least squares loss $ L [ \phi ] $  with respect t
 
 \begin{dmath*}
     \frac{\partial{L[\phi]}}{\partial{\phi_0}} = \
-    \left(- y_{i} + e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x \right)}\right) \cdot \newline \left(2 \left(- \frac{1}{16} \phi_{0} - \frac{3}{800} \phi_{1} x\right) e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x \right)} + 2 e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x\right)^{2}} \cos{\left(\phi_{0} + 0.06 \phi_{1} x \right)}\right)
+    \left(- y_{i} + e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x_{i}\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x_{i} \right)}\right) \cdot \newline \left(2 \left(- \frac{1}{16} \phi_{0} - \frac{3}{800} \phi_{1} x_{i}\right) e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x_{i}\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x_{i} \right)} + 2 e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x_{i}\right)^{2}} \cos{\left(\phi_{0} + 0.06 \phi_{1} x_{i} \right)}\right)
 \end{dmath*}
 
 \begin{dmath*}
     \frac{\partial{L[\phi]}}{\partial{\phi_1}} = \
-    \left(- y_{i} + e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x \right)}\right) \left(- \frac{3}{400} x \left(\phi_{0} + 0.06 \phi_{1} x\right) e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x \right)} + 0.12 x e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x\right)^{2}} \cos{\left(\phi_{0} + 0.06 \phi_{1} x \right)}\right)
+    \left(- y_{i} + e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x_{i}\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x_{i} \right)}\right) \cdot \newline \left(- \frac{3}{400} x_{i} \left(\phi_{0} + 0.06 \phi_{1} x_{i}\right) e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x_{i}\right)^{2}} \sin{\left(\phi_{0} + 0.06 \phi_{1} x_{i} \right)} + 0.12 x_{i} e^{- \frac{1}{32} \left(\phi_{0} + 0.06 \phi_{1} x_{i}\right)^{2}} \cos{\left(\phi_{0} + 0.06 \phi_{1} x_{i} \right)}\right)
 \end{dmath*}
 
 \end{document}
