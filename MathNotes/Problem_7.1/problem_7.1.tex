@@ -1,0 +1,45 @@
+% Problem 7.1
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+
+% Blackboard letters
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{breqn} 
+\usepackage{verbatim}
+
+\title{Problem 7.1}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+A two-layer network with two hidden units in each layer can be defined as:
+
+\begin{align*}
+    y = \phi_{0}
+    &+ \phi_{1}a
+     \left[
+        \nu_{01}
+        + \nu_{11}a[\theta_{01} + \theta_{11}x]
+        + \nu_{21}a[\theta_{02} + \theta_{12}x]
+      \right]
+      \\
+    &+ \phi_{2}a
+    \left[
+        \nu_{02}
+        + \nu_{12}a[\theta_{01} + \theta_{11}x]
+        + \nu_{22}a[\theta_{02} + \theta_{12}x]
+    \right]
+\end{align*}
+
+Compute the derivatives of the output $y$ with respect to each of the $13$ parameters directly (not using back propagation).  Use $\mathbb{I}$ for $ \frac{\partial{a[z]}}{\partial{z}}$.
+
+\section{Answer}
+
+\end{document}
