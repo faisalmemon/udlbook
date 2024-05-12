@@ -10,6 +10,8 @@
 \usepackage{graphicx}
 \usepackage{breqn} 
 \usepackage{verbatim}
+% Hyper links
+\usepackage{hyperref}
 
 \title{Problem 7.1}
 
@@ -38,8 +40,48 @@ A two-layer network with two hidden units in each layer can be defined as:
     \right]
 \end{align*}
 
-Compute the derivatives of the output $y$ with respect to each of the $13$ parameters directly (not using back propagation).  Use $\mathbb{I}$ for $ \frac{\partial{a[z]}}{\partial{z}}$.
+Compute the derivatives of the output $y$ with respect to each of the $13$ parameters directly (not using back propagation).  Use $\mathbb{I}$ for $ \frac{\partial{a[z]}}{\partial{z}}$ where $a$ represents the ReLU activation function.
 
 \section{Answer}
+
+\begin{align*}
+    \frac{\partial{y}}{\partial{\phi_{0}}} &=
+    1
+    \\
+    \frac{\partial{y}}{\partial{\phi_{1}}} &=
+    a
+    (
+        \nu_{01} +\nu_{01}
+        + \nu_{11}a[\theta_{01} + \theta_{11}x]
+        + \nu_{21}a[\theta_{02} + \theta_{12}x]
+    ) 
+    \\
+    \frac{\partial{y}}{\partial{\phi_{2}}} &=
+    a
+    (
+        \nu_{02}
+        + \nu_{12}a[\theta_{01} + \theta_{11}x]
+        + \nu_{22}a[\theta_{02} + \theta_{12}x]
+    ) 
+\end{align*}
+
+For the $\theta_{01}$ partial derivative I used chain rule twice, with $u_{1}$ as $\phi_{1}\nu_{11}a[\theta_{01}]$ for the first symmetric part of the equation $\phi_{1}$ (and similarly $u_{2}$ as  $\phi_{2}\nu_{12}a[\theta_{01}]$ for the $\phi_{2}$)
+\begin{align*}
+    y &= a[u_{1}] + a[u_{2}]
+    \\
+    \frac{\partial{y}}{\partial{\theta_{01}}} &=
+    \frac{\partial{y}}{\partial{u_{1}}} \cdot \frac{\partial{u_{1}}}{\partial{\theta_{01}}} +  
+    \frac{\partial{y}}{\partial{u_{2}}} \cdot \frac{\partial{u_{2}}}{\partial{\theta_{01}}}
+    \\
+    \frac{\partial{y}}{\partial{\theta_{01}}} &=
+    \mathbb{I}(\phi_{1}\nu_{11}a[\theta_{01}]) \cdot \phi_{1}\nu_{11} + \mathbb{I}(\phi_{2}\nu_{12}a[\theta_{01}]) \cdot \phi_{2}\nu_{12}
+\end{align*}
+
+I dropped the final $a$ terms around $\theta_{01}$ to leave $ \cdot \phi_{1}\nu_{11}$ and $ \cdot \phi_{2}\nu_{12}$ because of the multiplication with the $\mathbb{I}$ covers the negative case as zero already.
+
+I haven't yet worked out the other terms but I think similar logic applies.
+
+I have asked for a sanity check on \href{https://math.stackexchange.com/questions/4914949/}{\texttt{math.stackexchange.com/questions/4914949}}.
+
 
 \end{document}
