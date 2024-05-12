@@ -21,5 +21,28 @@
 
 \section{Problem}
 
+Find the final derivatives for
 
+\begin{align*}
+    f_{0} &= \beta_{0} + \omega_{0} \cdot x_{i} \\
+    h_{1} &= \sin[f_{0}] \\
+    f_{1} &= \beta_{1} + \omega_{1} \cdot h_{1} \\
+    h_{2} &= \exp[f_{1}] \\
+    f_{2} &= \beta_{2} + \omega_{2} \cdot h_{2} \\
+    h_{3} &= \cos[f_{2}] \\
+    f_{3} &= \beta_{3} + \omega_{3} \cdot h_{3} \\
+    l_{i} &= (f_{3}- y_{i})^2
+\end{align*}
+
+\section{Answer}
+
+\begin{align*}
+\frac{\partial{l_{i}}}{\partial{f_{3}}} &= 2(f_{3}- y_{i}) \\
+\frac{\partial{l_{i}}}{\partial{h_{3}}} &= \frac{\partial{l_{i}}}{\partial{f_{3}}} \frac{\partial{f_{3}}}{\partial{h_{3}}} = 2(f_{3}- y_{i}) \cdot \omega_{3} \\
+\frac{\partial{l_{i}}}{\partial{f_{2}}} &= \frac{\partial{l_{i}}}{\partial{h_{3}}} \frac{\partial{h_{3}}}{\partial{f_{2}}} = 2(f_{3}- y_{i}) \cdot \omega_{3} \cdot - \sin[f_{2}] = - 2 \omega_{3} (f_{3}- y_{i}) \sin[f_{2}] \\
+\frac{\partial{l_{i}}}{\partial{h_{2}}} &= \frac{\partial{l_{i}}}{\partial{f_{2}}} \frac{\partial{f_{2}}}{\partial{h_{2}}} = - 2 \omega_{3} (f_{3}- y_{i}) \sin[f_{2}] \cdot \omega_{2} = - 2 \omega_{3} \omega_{2} (f_{3}- y_{i}) \sin[f_{2}] \\
+\frac{\partial{l_{i}}}{\partial{f_{1}}} &= \frac{\partial{l_{i}}}{\partial{h_{2}}} \frac{\partial{h_{2}}}{\partial{f_{1}}} = - 2 \omega_{3} \omega_{2} (f_{3}- y_{i}) \sin[f_{2}] \cdot \exp[f_{1}] \\
+\frac{\partial{l_{i}}}{\partial{h_{1}}} &= \frac{\partial{l_{i}}}{\partial{f_{1}}} \frac{\partial{f_{1}}}{\partial{h_{1}}} = - 2 \omega_{3} \omega_{2} (f_{3}- y_{i}) \sin[f_{2}] \cdot \exp[f_{1}] \cdot \omega_{1} = - 2 \omega_{3} \omega_{2} \omega_{1} (f_{3}- y_{i}) \sin[f_{2}] \cdot \exp[f_{1}] \\
+\frac{\partial{l_{i}}}{\partial{f_{0}}} &= \frac{\partial{l_{i}}}{\partial{h_{1}}} \frac{\partial{h_{1}}}{\partial{f_{0}}} = - 2 \omega_{3} \omega_{2} \omega_{1} (f_{3}- y_{i}) \sin[f_{2}] \cdot \exp[f_{1}] \cdot \cos[f_{0}]
+\end{align*}
 \end{document}
