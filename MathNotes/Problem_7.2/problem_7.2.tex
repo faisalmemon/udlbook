@@ -48,4 +48,17 @@ Find the final derivatives for
 \frac{\partial{l_{i}}}{\partial{\beta_{0}}} &= \frac{\partial{l_{i}}}{\partial{f_{0}}} \frac{\partial{f_{0}}}{\partial{\beta_{0}}} = - 2 \omega_{3} \omega_{2} \omega_{1} (f_{3}- y_{i}) \sin[f_{2}] \cdot \exp[f_{1}] \cdot \cos[f_{0}] \\
 \frac{\partial{l_{i}}}{\partial{\omega_{0}}} &= \frac{\partial{l_{i}}}{\partial{f_{0}}} \frac{\partial{f_{0}}}{\partial{\omega{0}}} = - 2 \omega_{3} \omega_{2} \omega_{1} (f_{3}- y_{i}) \sin[f_{2}] \cdot \exp[f_{1}] \cdot \cos[f_{0}] \cdot x_{i}
 \end{align*}
+
+The final derivatives are just multiplying by $1$ and $h_{k}$ respectively from looking up the omega or beta from the formula definitions.
+
+\begin{verbatim}
+dldbeta3 = 2 * (f3 - y) * 1
+dldomega3 = 2 * (f3 - y) * h3
+dldbeta2 = dldf2 * 1
+dldomega2 = dldf2 * h2
+dldbeta1 = dldf1 * 1
+dldomega1 = dldf1 * h1
+dldbeta0 = dldf0 * 1
+dldomega0 = dldf0 * x
+\end{verbatim}
 \end{document}
