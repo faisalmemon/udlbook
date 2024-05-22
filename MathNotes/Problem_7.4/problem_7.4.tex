@@ -1,0 +1,41 @@
+% Problem 7.4
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+
+% Blackboard letters
+\usepackage{amsfonts}
+
+\usepackage{graphicx}
+\usepackage{breqn} 
+\usepackage{verbatim}
+% Hyper links
+\usepackage{hyperref}
+
+\title{Problem 7.4}
+\author{Faisal Memon}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Calculate the derivative $\frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}}$
+for the least squares loss function
+   $ l_{i} = (y_{i} - f[\boldsymbol{x}_{i}, \boldsymbol{\phi}])^2$.
+
+\section{Answer}
+
+\begin{align*}
+\text{Let } u &= (y_{i} - f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]) \\
+l_{i} &= u^2 \\
+\text{Using the Chain Rule }\frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} &= \frac{\partial{l_{i}}}{\partial{u}} \cdot \frac{\partial{u}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} \\
+\text{We have }\frac{\partial{u}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} &= -1 \\
+\frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} &= 2 \cdot u \cdot -1 \\
+\frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} &= -2 \,(y_{i} - f[\boldsymbol{x}_{i}, \boldsymbol{\phi}])
+\end{align*}
+
+\end{document}
