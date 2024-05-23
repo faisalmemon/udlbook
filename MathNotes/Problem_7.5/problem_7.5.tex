@@ -1,0 +1,87 @@
+% Problem 7.5
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+
+% Blackboard letters
+\usepackage{amsfonts}
+
+\usepackage{graphicx}
+\usepackage{breqn} 
+\usepackage{verbatim}
+% Hyper links
+\usepackage{hyperref}
+
+\title{Problem 7.5}
+\author{Faisal Memon}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Calculate the derivative $\frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}}$
+for binary classification loss function
+\begin{align*}
+   l_{i} &= -1 (1 - y_{i}) \log [ 1 - sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] - y_{i} \log [ sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]]
+   \\
+   \text{With } sig[z] &= \frac{1}{1 + \exp [-z]}
+\end{align*}
+
+\section{Answer}
+
+\begin{align*}
+   l_{i} &= -1 (1 - y_{i}) \log [ 1 - sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] - y_{i} \log [ sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \\
+   l_{i} &= (y_{i} - 1) \log [ 1 - sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] - y_{i} \log [ sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \\
+   l_{i} &= a \cdot b  - c \cdot d \\
+   \text{Where} \\
+   a &= (y_{i} - 1) \\
+   b &= \log [ 1 - sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \\
+   c &= y_{i} \\
+   d &= \log [ sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \\
+   \text{Using Chain Rule twice} \\
+   \frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} &=
+   a \cdot \frac{\partial{b}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}}
+   + b \cdot \frac{\partial{a}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}}
+   - c \cdot \frac{\partial{d}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}}
+   - d \cdot \frac{\partial{c}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}}
+\end{align*}
+
+\begin{verbatim}
+   Using SymPy
+
+   sig is 1/(1 + exp(-x))
+   diff(sig) is \frac{e^{- x}}{\left(1 + e^{- x}\right)^{2}}
+
+   a is y - 1
+   diff(a, x) is 0
+
+   b is log(1 - 1/(1 + exp(-x)))
+   diff(b, x) is - \frac{e^{- x}}{\left(1 - \frac{1}{1 + e^{- x}}\right)
+    \left(1 + e^{- x}\right)^{2}}
+
+   c is y
+   diff(c, x) is 0
+
+   d is log(1/(1 + exp(-x)))
+   diff(d, x) is \frac{e^{- x}}{1 + e^{- x}}
+\end{verbatim}
+
+
+\begin{align*}
+   \text{Therefore} \\
+   \frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} &=
+   (y_{i} - 1) \cdot
+   - \frac{e^{- x}}{\left(1 - \frac{1}{1 + e^{- x}}\right) \left(1 + e^{- x}\right)^{2}}
+   + \log [ 1 - sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \cdot 0
+   - y_{i} \cdot \frac{e^{- x}}{1 + e^{- x}}
+   - \log [ sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \cdot 0 \\
+   &= (y_{i} - 1) \cdot
+   - \frac{e^{- x}}{\left(1 - \frac{1}{1 + e^{- x}}\right) \left(1 + e^{- x}\right)^{2}}
+   - y_{i} \cdot \frac{e^{- x}}{1 + e^{- x}}
+\end{align*}
+
+\end{document}
