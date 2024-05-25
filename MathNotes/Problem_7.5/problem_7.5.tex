@@ -79,9 +79,9 @@ for binary classification loss function
    + \log [ 1 - sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \cdot 0
    - y_{i} \cdot \frac{e^{- x}}{1 + e^{- x}}
    - \log [ sig[f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]]] \cdot 0 \\
-   &= (y_{i} - 1) \cdot
+   \frac{\partial{l_{i}}}{\partial{f[\boldsymbol{x}_{i}, \boldsymbol{\phi}]}} &= (y_{i} - 1) \cdot
    - \frac{e^{- x}}{\left(1 - \frac{1}{1 + e^{- x}}\right) \left(1 + e^{- x}\right)^{2}}
-   - y_{i} \cdot \frac{e^{- x}}{1 + e^{- x}}
+   - y_{i} \cdot \frac{e^{- x}}{1 + e^{- x}} \quad \square
 \end{align*}
 
 \end{document}
