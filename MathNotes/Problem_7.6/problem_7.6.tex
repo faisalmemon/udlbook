@@ -1,0 +1,72 @@
+% Problem 7.6
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+
+% Blackboard letters
+\usepackage{amsfonts}
+
+\usepackage{graphicx}
+\usepackage{breqn} 
+\usepackage{verbatim}
+% Hyper links
+\usepackage{hyperref}
+
+\title{Problem 7.6}
+\author{Faisal Memon}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Show that for \begin{equation*}
+   \boldsymbol{z} = \boldsymbol{\beta} + \boldsymbol{\Omega}\boldsymbol{h}
+\end{equation*}
+
+\begin{align*}
+   \frac{\partial{\boldsymbol{z}}}{\partial{\boldsymbol{h}}} &= \boldsymbol{\Omega}^{T}
+\end{align*}
+
+\section{Answer} 
+
+Using numerator-layout notation. $\boldsymbol{z}$ is $ m \times 1 $ and $\boldsymbol{h}$ is $n \times 1$. $\boldsymbol{\Omega}$ is $m \times n$.
+
+\begin{align*}
+   \frac{\partial{\boldsymbol{z}}}{\partial{\boldsymbol{h}}} &=
+   \begin{bmatrix}
+      \frac{\partial{z}_{1}}{h_{0}} & \frac{\partial{z}_{1}}{h_{1}} &\frac{\partial{z}_{1}}{h_{2}} & \dots  & \frac{\partial{z}_{0}}{h_{n}} \\
+      \frac{\partial{z}_{2}}{h_{0}} & \frac{\partial{z}_{2}}{h_{1}} &\frac{\partial{z}_{2}}{h_{2}} & \dots  & \frac{\partial{z}_{1}}{h_{n}} \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      \frac{\partial{z}_{m}}{h_{0}} & \frac{\partial{z}_{m}}{h_{1}} &\frac{\partial{z}_{m}}{h_{2}} & \dots  & \frac{\partial{z}_{m}}{h_{n}} \\
+  \end{bmatrix}
+  \\
+  z_{i} &= \beta_{i} + \sum_{j}\omega_{ij}h_{j} \\
+  \text{Therefore }\frac{\partial{z_{i}}}{\partial{h_{j}}} &= \omega_{ij}
+\end{align*}
+
+Looking at the top row of the matrix, it is comprised of each $\omega_{0j}$ of the first row of $\Omega$.
+
+However, the text book uses the denominator layout.  This transposes our above matrix.
+
+\begin{align*}
+   \frac{\partial{\boldsymbol{z}}}{\partial{\boldsymbol{h}}} &=
+   \begin{bmatrix}
+      \frac{\partial{z}_{1}}{h_{1}} & \frac{\partial{z}_{2}}{h_{1}} &\frac{\partial{z}_{3}}{h_{1}} & \dots  & \frac{\partial{z}_{m}}{h_{1}} \\
+      \frac{\partial{z}_{1}}{h_{2}} & \frac{\partial{z}_{2}}{h_{2}} &\frac{\partial{z}_{3}}{h_{2}} & \dots  & \frac{\partial{z}_{m}}{h_{2}} \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      \frac{\partial{z}_{1}}{h_{n}} & \frac{\partial{z}_{2}}{h_{n}} &\frac{\partial{z}_{3}}{h_{n}} & \dots  & \frac{\partial{z}_{m}}{h_{n}} \\
+  \end{bmatrix}
+\end{align*}
+
+Looking at the top row of the matrix, it is comprised of each $\omega_{j0}$ of the first column of $\Omega$.
+
+And therefore the answer is a matrix comprising $\omega_{ji}$ which is $\boldsymbol{\Omega}^{T}$.
+
+
+
+
+\end{document}
