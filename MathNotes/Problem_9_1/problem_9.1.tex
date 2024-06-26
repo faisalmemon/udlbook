@@ -1,0 +1,68 @@
+% Problem 9.1
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+
+% Blackboard letters
+\usepackage{amsfonts}
+
+\usepackage{graphicx}
+\usepackage{breqn} 
+\usepackage{verbatim}
+% Hyper links
+\usepackage{hyperref}
+
+\title{Problem 9.1}
+\author{Faisal Memon}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Consider a model where the prior distribution over the parameters is a normal distribution with mean zero and variance $ \sigma_{\phi}^{2} $ so that
+\begin{equation*}
+   Pr(\phi) = \prod_{j=1}^{J} \text{Norm}_{\phi_{j}}[0, \sigma_{\phi}^{2}].
+\end{equation*}
+
+where $ j $ indexes the model parameters.  We now maximise $ \prod_{i=1}^{I} Pr(y_{i} | x_{i},\phi)Pr(\phi) $.  Show that the associated loss of this model is equivalent to L2 regularization.
+
+\section{Answer} 
+
+Bayes Theorem says
+\begin{equation*}
+   Pr(H|E) = \frac{Pr(H) \cdot Pr(E|H)}{Pr(E)}
+\end{equation*}
+
+In our case
+\begin{equation*}
+   Pr( \phi | y) = \frac{Pr(\phi) \cdot Pr(y | \phi)}{Pr(y)}   
+\end{equation*}
+
+The \textit{maximum a posteriori}  criterion is $ \underset{\phi}{\mathrm{argmax}}  \;  \prod_{i=1}^{I} Pr(y_{i} | x_{i},\phi)Pr(\phi)$
+
+We use a negative log likelihood function by minimising the negative log.
+\begin{equation*}
+   \underset{\phi}{\mathrm{argmin}} -1 \cdot \left( log \left(\sum_{i=1}^{I}Pr(y_{i|x_{i}, \phi}) \right) + log \left(\sum_{i=1}^{I} Pr(\phi)   \right) \right)
+\end{equation*}
+
+Expanding out the $ Pr(\phi) $
+\begin{equation*}
+   \text{Norm}_{\phi_{j}}[0, \sigma_{\phi}^{2}] = \frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp (- \phi_{j}^{2}/2\sigma^{2})
+\end{equation*}
+So that
+\begin{equation*}
+   log \left(\sum_{i=1}^{I} Pr(\phi)   \right) = \sum_{j=1}^{J} - \phi_{j}^{2}/2\sigma^{2} + constant
+\end{equation*}
+
+Re-arranging into the canonical form, this is
+\begin{equation*}
+   \phi = \underset{\phi}{\mathrm{argmin}} \left[  \sum_{i=1}^{I} l_{i}[x_{i}, y_{i}] + \lambda \sum_{j=1}^{J} \phi_{j}^{2}  \right]
+\end{equation*}
+
+This represents L2 regularization.
+
+\end{document}
