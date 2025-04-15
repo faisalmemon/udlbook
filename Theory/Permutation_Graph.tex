@@ -38,4 +38,12 @@ Consider the simple GNN layer:
             \mathbf{H}_{k}\mathbf{A}
             \end{bmatrix}]
 \end{equation*}
+
+where \(H\) is a \(D \times N\) matrix containing the \(N\) node embeddings in its columns,
+ \(A\) is the \(N \times N\) adjacency matrix, \(\beta\) is the bias vector, and \(\Omega\) is the weight matrix.
+
+Show that 
+\begin{equation*}
+    GraphLayer[\mathbf{H}_{k}, \mathbf{A}]\mathbf{P} = GraphLayer[\mathbf{H}_{k}\mathbf{P}, \mathbf{P}^{T}\mathbf{A}\mathbf{\mathbf{P}}]
+\end{equation*}
 \end{document}
