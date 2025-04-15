@@ -29,4 +29,13 @@ If $\mathbf{P}$ is a permutation matrix, then the following holds:
     \mathbf{H}_{k+1}\mathbf{P} = \mathbf{F}[\mathbf{H}_{k}\mathbf{P}, \mathbf{P}^{T}\mathbf{A}\mathbf{\mathbf{P}}, \boldsymbol{\phi}_{k}].
 \end{equation*}
 
+\section{Problem 13.7}
+Consider the simple GNN layer:
+\begin{equation*}
+    \mathbf{H}_{k+1} = GraphLayer[\mathbf{H}_{k}, \mathbf{A}]
+        = \mathbf{a}[\boldsymbol{\beta}_{k}\mathbf{1}^{T} + \boldsymbol{\Omega}_{k}\begin{bmatrix}
+            \mathbf{H}_{k}\\
+            \mathbf{H}_{k}\mathbf{A}
+            \end{bmatrix}]
+\end{equation*}
 \end{document}
