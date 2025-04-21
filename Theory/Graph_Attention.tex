@@ -1,0 +1,48 @@
+% Theory 13.8.6
+
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+
+% Blackboard letters
+\usepackage{amsfonts}
+
+\usepackage{graphicx}
+\usepackage{breqn} 
+\usepackage{verbatim}
+% Hyper links
+\usepackage{hyperref}
+
+\title{Theory 13.8.6}
+\author{Faisal Memon}
+
+\begin{document}
+
+\maketitle
+
+\section{Aggregation by attention}
+
+The aggregation methods discussed so far either weight the contribution of the neighbors
+equally or in a way that depends on the graph topology. Conversely, in graph attention
+layers, the weights depend on the data at the nodes. A linear transform is applied to
+the current node embeddings so that:
+
+\begin{equation*}
+    \mathbf{H}_{k}^{'} = \boldsymbol{\beta}_{k}\mathbf{1}^{T} + \boldsymbol{\Omega}_{k}\mathbf{H}.
+\end{equation*}
+
+Then the simularity $ s_{mn} $ of each transformed node embedding $ \mathbf{h}_{m}^{'} $ to the
+ transformed node embedding
+ $ \mathbf{h}_{n}^{'} $ is computed by concatenating the the pairs, taking a dot product
+  with a column vector $ \boldsymbol{\phi}_{k} $ of learned parameters, and applying an 
+  activation function:
+  \begin{equation*}
+    s_{mn} = a\left(\boldsymbol{\phi}_{k}^{T}
+    \begin{bmatrix}
+    \mathbf{h}_{m}^{'} \\ 
+    \mathbf{h}_{n}^{'}
+    \end{bmatrix}
+    \right).
+  \end{equation*}
+\end{document}
