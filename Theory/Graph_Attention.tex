@@ -34,7 +34,7 @@ the current node embeddings so that:
 
 Then the simularity $ s_{mn} $ of each transformed node embedding $ \mathbf{h}_{m}^{'} $ to the
  transformed node embedding
- $ \mathbf{h}_{n}^{'} $ is computed by concatenating the the pairs, taking a dot product
+ $ \mathbf{h}_{n}^{'} $ is computed by concatenating the pairs, taking a dot product
   with a column vector $ \boldsymbol{\phi}_{k} $ of learned parameters, and applying an 
   activation function:
   \begin{equation*}
@@ -45,4 +45,14 @@ Then the simularity $ s_{mn} $ of each transformed node embedding $ \mathbf{h}_{
     \end{bmatrix}
     \right).
   \end{equation*}
+
+  These variables are stored in a matrix $ \mathbf{S} $ of size $ N \times N $, where each element represents the
+  similarity of every node to every other.  As in dot-product self-attention, the attention weights 
+  contributing to each output embedding are normalized to be positive and to to one using the softmax operation.
+  However, only those values corresponding to the current node and its neighbors should contribute.
+  The attention weights are applied to the transformed embeddings:
+
+\begin{equation*}
+\mathbf{H}_{k+1} = \mathbf{a}\left[\mathbf{H}_{k}^{'} \cdot \mathbf{Softmask}[\mathbf{S}, \mathbf{A} + \mathbf{I}] \right]
+\end{equation*}
 \end{document}
