@@ -57,10 +57,10 @@ Then the simularity $ s_{mn} $ of each transformed node embedding $ \mathbf{h}_{
 \end{equation*}
 
 where $ \mathbf{a}[\large\bullet] $ is a second activation function.
-
 The function $ \mathbf{Softmask}[\bullet,\bullet] $ computes the attention values by applying softmax
 operation separately to each column of its argument $ \mathbf{S} $, but only after setting values where the second
-argument $ \mathbf{A} + \mathbf{I} $ is zero to $ -\infty $.  This ensures that the attention to non-neighboring nodes is zero.
+argument $ \mathbf{A} + \mathbf{I} $ is zero to $ -\infty $ so they do not contribute.
+This ensures that the attention to non-neighboring nodes is zero.
 
 This is very similar to the self-attention computation in transformers (see figure 13.12), except that 
 (i) The keys, queries, and values are all the same, (ii) The measure of similarity is different,
